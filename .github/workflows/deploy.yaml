@@ -138,7 +138,7 @@ jobs:
     outputs:
       app_insights_connection_string: ${{ steps.runterraform.outputs.app_insights_connection_string }}
       registration_service_host: ${{ steps.runterraform.outputs.registration_service_host }}
-      registration_service_url: ${{ steps.runterraform.outputs.registration_service_url }}
+      registration_service_url: http://195.37.5.153:8184/authority
       gaiax_did_host: ${{ steps.runterraform.outputs.gaiax_did_host }}
       dataspace_did_host: ${{ steps.runterraform.outputs.dataspace_did_host }}
 
@@ -200,7 +200,10 @@ jobs:
           echo "::set-output name=key_vault::${key_vault}"
           app_insights_connection_string=$(terraform output -raw app_insights_connection_string)
           echo "::set-output name=app_insights_connection_string::${app_insights_connection_string}"
-          registration_service_url=$(terraform output -raw registration_service_url)
+          
+          
+          
+          _service_url=$(terraform output -raw registration_service_url)
           echo "::set-output name=registration_service_url::${registration_service_url}"
           dataspace_did_host=$(terraform output -raw dataspace_did_host)
           echo "::set-output name=dataspace_did_host::${dataspace_did_host}"
